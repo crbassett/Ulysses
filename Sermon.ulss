@@ -1,0 +1,350 @@
+//
+// Sermon
+//
+// Export style aimed at printing a sermon manuscript suitable for manual markup for memorization and delivery.
+//
+// Visit http://crbassett.com for full reference
+//
+
+
+//
+// Document & Layout Settings
+//
+
+document-settings {
+	page-inset-top:		0.5in;	page-inset-inner:	1.25in
+	page-inset-bottom:	0.5in;	page-inset-outer:	1.25in
+
+	two-sided:				no
+	page-binding:			left
+
+	footnote-enumeration:	per-section
+	footnote-placement:	end-of-page
+	footnote-style:			decimal
+}
+
+
+
+//
+// Commonly used values
+//
+
+$mark-color =				#FEFECC
+$black =					#000000
+$light-grey =				#cccccc
+$cool-blue = 				#3875d7
+
+$indent =					0in
+$font-size =				12pt
+$line-height =				110%
+
+
+
+//
+// Default Typography
+//
+
+defaults {
+	font-family:			"Sentinel"
+	font-size:				$font-size
+	line-height:			$line-height
+
+	text-alignment:			left
+	hyphenation:			no
+}
+
+
+
+//
+// Basic Non-Text-Area Page Layout
+//
+
+area-footer {
+	content:				page-number
+	text-alignment:		left
+	bottom-spacing:		0.35in
+	font-size:				8pt
+	font-weight:			bold
+}
+
+area-footnotes {
+	divider-length:			5cm
+	divider-spacing:		0pt
+	divider-width:			0.7pt
+	anchor-alignment:		left
+	anchor-inset:			2em
+	margin-left:			-2em
+}
+
+inline-footnote paragraph {
+	margin-top:			12pt;
+	line-height:			18pt
+}
+
+
+
+//
+// Reusable styles
+//
+
+@code {
+	font-family:			"Courier"
+	font-size:				10.5pt
+	// Reset all traits to normal, since code blocks can appear anywhere
+	font-weight:			normal
+	font-slant:				normal
+}
+
+
+
+//
+// Headers
+//
+
+heading-all {
+	keep-with-following:	true
+	text-alignment:			left
+}
+
+heading-1 {
+	style-title:			"Heading 1"
+	text-alignment:			left
+	font-weight:			normal
+}
+
+heading-2 {
+	style-title:			"Heading 2"
+	text-alignment:			left
+	font-weight:			bold
+	margin-bottom:			$font-size
+}
+
+heading-3 {
+	style-title:			"Heading 3"
+	font-weight:			bold
+	text-alignment:			left
+ 	margin-bottom:			$font-size
+}
+
+heading-4 {
+	style-title:			"Heading 4"
+	font-weight:			bold
+	first-line-indent:		0.5in
+}
+
+heading-5 {
+	style-title:			"Heading 5"
+	first-line-indent:		0.5in
+	font-slant:				italic
+	font-weight:			bold
+}
+
+heading-6 {
+	style-title:			"Heading 6"
+	font-weight:			normal
+	text-alignment:			left
+	first-line-indent:		0.5in
+	font-slant:				italic
+}
+
+
+
+//
+// Paragraph styles
+//
+
+paragraph {
+	style-title:			"Paragraph"
+	first-line-indent:		$indent
+	margin-bottom:			$font-size
+}
+
+paragraph-divider {
+	page-break:				none
+	visibility:				hidden
+}
+
+paragraph-figure {
+	margin-top:				$line-height
+	keep-with-following:	yes
+	text-alignment:			center
+}
+
+paragraph-figure + paragraph {
+	text-alignment:			center
+	first-line-indent:		0pt
+	margin-bottom:			2.75pt
+}
+
+
+
+//
+// Block styles
+//
+
+block-all {
+	margin-left:			$indent
+}
+
+block-code : @code {
+	style-title:			"Codeblock"
+	font-size:				10pt
+}
+
+block-code paragraph {
+	margin-top:				7pt
+	margin-bottom:			3pt
+	text-alignment:			left
+	first-line-indent:		0pt
+	hyphenation:			no
+	default-tab-interval:	4em
+}
+
+block-quote {
+	style-title:			"Blockquote"
+	margin-left:			$indent
+	font-slant:				italic
+}
+
+block-quote paragraph {
+	first-line-indent:		0pt
+}
+
+block-quote paragraph + paragraph {
+	first-line-indent:		$indent
+}
+
+block-raw {
+	// kills raw source blocks
+	visibility:				hidden
+}
+
+block-comment {
+	visibility:				hidden
+}
+
+
+
+//
+// List styles
+//
+
+list-all {
+	margin-left:			$indent
+}
+
+list-all list-all {
+	// No extra spacings between nested ordered and unordered lists
+	margin-top:				0pt;
+	margin-bottom:			0pt;
+}
+
+list-ordered {
+	// Simulates tab stop justified right
+	enumeration-format:		"%d."
+	text-inset:				1.5em;
+}
+
+list-ordered list-ordered {
+	// Simulates tab stop justified right
+	enumeration-format:		"%*%d"
+	text-inset:				2em
+	margin-left:			1.5em
+}
+
+list-ordered list-ordered list-ordered {
+	// Simulates tab stop justified right
+	enumeration-format:		"%*.%d"
+	text-inset:				2.75em
+	margin-left:			2em
+}
+
+list-unordered {
+	enumeration-format:		"•"
+	text-inset:				1.3em;
+}
+
+list-unordered list-unordered {
+	enumeration-format:		"•"
+	text-inset:				1em;
+}
+
+list-unordered list-unordered list-unordered {
+	enumeration-format:		"•"
+	text-inset:				1.3em;
+}
+
+
+
+//
+// Inline styles
+//
+
+inline-strong {
+	style-title:			"Strong"
+	font-weight:			bold
+}
+
+inline-emphasis {
+	style-title:			"Emphasis"
+	font-slant:				italic;
+}
+
+inline-mark {
+	style-title:			"Mark"
+	background-color:		$mark-color
+}
+
+inline-citation {
+	style-title:			"Inline Cite"
+	font-slant:				italic;
+}
+
+inline-code : @code {
+	style-title:			"Inline Code"
+}
+
+inline-link {
+	style-title:			"Link"
+	font-color:				$cool-blue
+	underline:				single
+	underline-color:		$cool-blue
+}
+
+inline-comment {
+	visibility:				hidden;
+}
+
+inline-delete {
+	// deletes deletions
+	visibility:				hidden;
+}
+
+inline-annotation {
+	footnote-visibility:	hidden
+}
+
+inline-annotation:anchor {
+	background-color:		#ffffff
+}
+
+inline-annotation paragraph {
+	margin-top:				12pt;
+	line-height:			18pt
+}
+
+inline-raw {
+	// kills raw source
+	visibility:				hidden;
+}
+
+
+
+//
+// Ulysses specific stuff
+// By default, we are hiding tags (##) etc.
+//
+
+ulysses-tag {
+	visibility:				hidden
+}
