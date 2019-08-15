@@ -12,8 +12,8 @@
 //
 
 document-settings {
-	page-inset-top:		0.5in;	page-inset-inner:	1.25in
-	page-inset-bottom:	0.5in;	page-inset-outer:	1.25in
+	page-inset-top:		1.5in;	page-inset-inner:	1.5in
+	page-inset-bottom:	1.5in;	page-inset-outer:	1.5in
 
 	two-sided:				no
 	page-binding:			left
@@ -35,8 +35,8 @@ $light-grey =				#cccccc
 $cool-blue = 				#3875d7
 
 $indent =					0in
-$font-size =				12pt
-$line-height =				110%
+$font-size =				11pt
+$line-height =				100%
 
 
 
@@ -45,11 +45,11 @@ $line-height =				110%
 //
 
 defaults {
-	font-family:			"Sentinel"
+	font-family:			"IBM Plex Serif"
 	font-size:				$font-size
 	line-height:			$line-height
 
-	text-alignment:			left
+	text-alignment:		left
 	hyphenation:			no
 }
 
